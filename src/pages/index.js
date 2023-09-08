@@ -17,7 +17,7 @@ export default function Home() {
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
         <div className={styles.description}>
-          <Link href="/docs/index.html">
+          <Link href="/docs.html">
           <p>
             Welcome in Documentation  BE-SIKP 
           </p>
