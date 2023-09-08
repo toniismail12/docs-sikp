@@ -1,0 +1,767 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: API BE-SIKP 2023
+  description: API Documentation for BE-SIKP
+servers:
+  - url: http://localhost:9001
+    description: API Local
+  - url: https://gwkong.pusri.co.id/sikp-prod
+    description: API Prod
+  - url: https://gwkong.pusri.co.id/sikp-dev
+    description: API Dev
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+
+  parameters:
+    Page:
+      name: page
+      in: query
+      description: "Page number for pagination (default: 1)"
+      schema:
+        type: integer
+    Limit:
+      name: limit
+      in: query
+      description: "Number of items to return per page (default: 10)"
+      schema:
+        type: integer
+
+  responses:
+      '200':
+        description: OK
+      '400':
+        description: "Bad Request"
+      '401':
+        description: Unauthorized
+
+security:
+  - bearerAuth: []
+
+paths:
+  /login:
+      post:
+        tags:
+          - Authentication
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  username:
+                    type: string
+                  password:
+                    type: string
+        responses:
+          '200':
+            $ref: '#/components/responses/200'
+          '400':
+            $ref: '#/components/responses/400'
+          '401':
+            $ref: '#/components/responses/401'
+
+  /auth-me:
+    get:
+      tags:
+        - Authentication   
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+            
+  /logout:
+    delete:
+      tags:
+        - Authentication   
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+
+  /data:
+    post:
+      tags:
+        - Decrypt Data
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+
+  /users:
+      post:
+        tags:
+          - Users
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  username:
+                    type: string
+                  password:
+                    type: string
+                  id_role:
+                    type: integer
+        responses:
+          '200':
+            $ref: '#/components/responses/200'
+          '400':
+            $ref: '#/components/responses/400'
+          '401':
+            $ref: '#/components/responses/401'
+
+      get:
+        tags:
+          - Users   
+        parameters:
+          - $ref: '#/components/parameters/Page'
+          - $ref: '#/components/parameters/Limit'
+          - in: query
+            name: username
+            schema:
+              type: string
+          - in: query
+            name: name
+            schema:
+              type: string
+        responses:
+          '200':
+            $ref: '#/components/responses/200'
+          '400':
+            $ref: '#/components/responses/400'
+          '401':
+            $ref: '#/components/responses/401'
+      
+      delete:
+        tags:
+          - Users   
+        parameters:
+          - in: query
+            name: username
+            schema:
+              type: string
+        responses:
+          '200':
+            $ref: '#/components/responses/200'
+          '400':
+            $ref: '#/components/responses/400'
+          '401':
+            $ref: '#/components/responses/401'
+
+  /role:
+    get:
+      tags:
+        - Role
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+        - in: query
+          name: role
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+
+  /cors:
+    post:
+      tags:
+        - Cors
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                domain:
+                  type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+
+    get:
+      tags:
+        - Cors
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+        - in: query
+          name: domain
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+
+    delete:
+      tags:
+        - Cors
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+  
+  /bidang:
+    post:
+      tags:
+        - Bidang
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                bidang:
+                  type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+
+    get:
+      tags:
+        - Bidang
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+        - in: query
+          name: bidang
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+
+    delete:
+      tags:
+        - Bidang
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+  
+  /unit-kerja-pusri:
+    get:
+      tags:
+        - Unit Kerja Pusri
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+        - in: query
+          name: dept_title
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+
+  /bidang-unit-kerja:
+    post:
+      tags:
+        - Bidang & Unit Kerja
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id_bidang:
+                  type: integer
+                id_unitkerja:
+                  type: string
+                unit_kerja:
+                  type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+  
+    get:
+      tags:
+        - Bidang & Unit Kerja
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+        - in: query
+          name: id_bidang
+          schema:
+            type: string
+        - in: query
+          name: bidang
+          schema:
+            type: string
+        - in: query
+          name: unit_kerja
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+
+    delete:
+      tags:
+        - Bidang & Unit Kerja
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+
+  /status:
+    post:
+      tags:
+        - Status
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                desc_status:
+                  type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+
+    get:
+      tags:
+        - Status
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+        - in: query
+          name: desc_status
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+    delete:
+      tags:
+        - Status
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+  /logs:
+    get:
+      tags:
+        - Logs
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+        - in: query
+          name: message
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+
+  /jenis-register:
+    get:
+      tags:
+        - Jenis Register
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+        - in: query
+          name: jenis_register
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+  
+  /register:
+    post:
+      tags:
+        - Register
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jenis_register:
+                  type: string
+                no_surat:
+                  type: string
+                tgl_surat:
+                  type: string
+                tingkat_pendidikan:
+                  type: string
+                nama_sekolah:
+                  type: string
+                alamat_sekolah:
+                  type: string
+                kota_sekolah:
+                  type: string
+                kodepos_sekolah:
+                  type: string
+                telp_sekolah:
+                  type: string
+                email_sekolah:
+                  type: string
+                fakultas:
+                  type: string
+                jurusan:
+                  type: string
+                id_status:
+                  type: integer
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+    get:
+      tags:
+        - Register
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+        - in: query
+          name: jenis_register
+          schema:
+            type: string
+        - in: query
+          name: no_surat
+          schema:
+            type: string
+        - in: query
+          name: tgl_surat
+          schema:
+            type: string
+        - in: query
+          name: tingkat_pendidikan
+          schema:
+            type: string
+        - in: query
+          name: nama_sekolah
+          schema:
+            type: string
+        - in: query
+          name: alamat_sekolah
+          schema:
+            type: string
+        - in: query
+          name: kota_sekolah
+          schema:
+            type: string
+        - in: query
+          name: kodepos_sekolah
+          schema:
+            type: string
+        - in: query
+          name: telp_sekolah
+          schema:
+            type: string
+        - in: query
+          name: email_sekolah
+          schema:
+            type: string
+        - in: query
+          name: fakultas
+          schema:
+            type: string
+        - in: query
+          name: jurusan
+          schema:
+            type: string
+        - in: query
+          name: status
+          schema:
+            type: string
+            
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+
+    delete:
+      tags:
+        - Register
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+
+  /peserta:
+    post:
+      tags:
+        - Peserta
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id_register:
+                  type: integer
+                  format: uint
+                id_pembimbing:
+                  type: integer
+                  format: uint
+                id_bidang:
+                  type: integer
+                  format: uint
+                no_induk:
+                  type: string
+                nama:
+                  type: string
+                email:
+                  type: string
+                kontak:
+                  type: string
+                start_date:
+                  type: string
+                end_date:
+                  type: string
+                nilai:
+                  type: number
+                  format: string
+                id_status:
+                  type: integer
+                  format: uint
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+    get:
+      tags:
+        - Peserta
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+
+        - in: query
+          name: id_register
+          schema:
+            type: string
+
+        - in: query
+          name: id_pembimbing
+          schema:
+            type: string
+
+        - in: query
+          name: pembimbing
+          schema:
+            type: string
+
+        - in: query
+          name: id_bidang
+          schema:
+            type: string
+
+        - in: query
+          name: bidang
+          schema:
+            type: string
+
+        - in: query
+          name: no_induk
+          schema:
+            type: string
+
+        - in: query
+          name: nama
+          schema:
+            type: string
+
+        - in: query
+          name: email
+          schema:
+            type: string
+
+        - in: query
+          name: kontak
+          schema:
+            type: string
+
+        - in: query
+          name: start_date
+          schema:
+            type: string
+
+        - in: query
+          name: end_date
+          schema:
+            type: string
+
+        - in: query
+          name: nilai
+          schema:
+            type: string
+
+        - in: query
+          name: status
+          schema:
+            type: string
+
+        - in: query
+          name: id_status
+          schema:
+            type: string
+
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+
+    delete:
+      tags:
+        - Peserta
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+  
