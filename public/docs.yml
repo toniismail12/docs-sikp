@@ -468,6 +468,111 @@ paths:
         '401':
           $ref: '#/components/responses/401'
 
+  /uploud-file:
+    post:
+      tags:
+        - Files
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                files:
+                  type: string
+                  format: binary
+      responses:
+        "200":
+          description: File uploaded successfully
+  /read-file:
+    get:
+      tags:
+        - Files
+      parameters:
+        - in: query
+          name: nama_file
+          schema:
+            type: string
+      responses:
+        "200":
+          $ref: "#/components/responses/200"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+  
+  /periode:
+    post:
+      tags:
+        - Periode
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                start_date:
+                  type: string
+                end_date:
+                  type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+
+    get:
+      tags:
+        - Periode
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+        - in: query
+          name: title
+          schema:
+            type: string
+        - in: query
+          name: start_date
+          schema:
+            type: string
+        - in: query
+          name: end_date
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+    delete:
+      tags:
+        - Periode
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+
   /jenis-register:
     get:
       tags:
@@ -491,6 +596,11 @@ paths:
     post:
       tags:
         - Register
+      parameters:
+        - in: query
+          name: id_register
+          schema:
+            type: string
       requestBody:
         required: true
         content:
@@ -647,14 +757,13 @@ paths:
                   type: string
                 kontak:
                   type: string
-                start_date:
-                  type: string
-                end_date:
-                  type: string
                 nilai:
                   type: number
                   format: string
                 id_status:
+                  type: integer
+                  format: uint
+                id_periode:
                   type: integer
                   format: uint
       responses:
@@ -693,6 +802,11 @@ paths:
 
         - in: query
           name: bidang
+          schema:
+            type: string
+
+        - in: query
+          name: id_periode
           schema:
             type: string
 
@@ -752,6 +866,75 @@ paths:
     delete:
       tags:
         - Peserta
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+
+  /lampiran:
+    post:
+      tags:
+        - Lampiran
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nama_lampiran:
+                  type: string
+                nama_file:
+                  type: string
+                uuid_parent:
+                  type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+    get:
+      tags:
+        - Lampiran
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+        - in: query
+          name: nama_lampiran
+          schema:
+            type: string
+
+        - in: query
+          name: uuid_parent
+          schema:
+            type: string
+        
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+
+    delete:
+      tags:
+        - Lampiran
       parameters:
         - in: query
           name: id
