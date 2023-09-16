@@ -758,8 +758,7 @@ paths:
                 kontak:
                   type: string
                 nilai:
-                  type: number
-                  format: string
+                  type: string
                 id_status:
                   type: integer
                   format: uint
