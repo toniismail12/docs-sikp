@@ -502,6 +502,23 @@ paths:
         "401":
           $ref: "#/components/responses/401"
   
+  /bytes-file:
+    get:
+      tags:
+        - Files
+      parameters:
+        - in: query
+          name: nama_file
+          schema:
+            type: string
+      responses:
+        "200":
+          $ref: "#/components/responses/200"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+  
   /periode:
     post:
       tags:
@@ -749,6 +766,15 @@ paths:
                 id_bidang:
                   type: integer
                   format: uint
+                id_status:
+                  type: integer
+                  format: uint
+                id_periode:
+                  type: integer
+                  format: uint
+                id_unitkerja:
+                  type: integer
+                  format: uint
                 no_induk:
                   type: string
                 nama:
@@ -759,12 +785,6 @@ paths:
                   type: string
                 nilai:
                   type: string
-                id_status:
-                  type: integer
-                  format: uint
-                id_periode:
-                  type: integer
-                  format: uint
       responses:
         '200':
           $ref: '#/components/responses/200'
@@ -851,6 +871,11 @@ paths:
 
         - in: query
           name: id_status
+          schema:
+            type: string
+        
+        - in: query
+          name: id_unitkerja
           schema:
             type: string
 
