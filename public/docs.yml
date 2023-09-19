@@ -47,6 +47,7 @@ paths:
       post:
         tags:
           - Authentication
+        description: This endpoint is used for user authentication, and it is accessible to all roles.
         requestBody:
           required: true
           content:
@@ -115,6 +116,7 @@ paths:
       post:
         tags:
           - Users
+        description: Tidak perlu input password jika user yang ditambkan adalah karyawan TKO. departemen dan departemen_id diambil dari endpoint /unit-kerja-pusri. username kalau bisa jangan di update, karena update user berdasarkan username. apabila username sudah terdaftar maka post selanjutnya adalah update.
         requestBody:
           required: true
           content:
@@ -127,6 +129,10 @@ paths:
                   username:
                     type: string
                   password:
+                    type: string
+                  departemen_id:
+                    type: string
+                  departemen:
                     type: string
                   id_role:
                     type: integer
@@ -150,6 +156,14 @@ paths:
               type: string
           - in: query
             name: name
+            schema:
+              type: string
+          - in: query
+            name: departemen
+            schema:
+              type: string
+          - in: query
+            name: role
             schema:
               type: string
         responses:
@@ -323,6 +337,76 @@ paths:
           $ref: '#/components/responses/400'
         '401':
           $ref: '#/components/responses/401'
+  
+  /master-unit-kerja:
+    post:
+      tags:
+        - Master Unit Kerja
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                unit_kerja:
+                  type: string
+                dept_id:
+                  type: string
+                kuota:
+                  type: integer
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+
+    get:
+      tags:
+        - Master Unit Kerja
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+        - in: query
+          name: dept_id
+          schema:
+            type: string
+
+        - in: query
+          name: unit_kerja
+          schema:
+            type: string
+
+        - in: query
+          name: kuota
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+    
+    delete:
+      tags:
+        - Master Unit Kerja
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+  
 
   /bidang-unit-kerja:
     post:
@@ -745,6 +829,7 @@ paths:
     post:
       tags:
         - Peserta
+      description: Pastikan email yang didaftarkan merupakan email aktif. ketika sudah submit pendaftaran maka akan mendapatkan pesan email yang berisi kode unik yang berguna untuk tracking pendaftaran.
       parameters:
         - in: query
           name: id
@@ -906,6 +991,7 @@ paths:
     get:
       tags:
         - Peserta
+      description: bagian id_unitkerja wajib diisi untuk melihat peserta di unit kerja.
       parameters:
         - $ref: '#/components/parameters/Page'
         - $ref: '#/components/parameters/Limit'
@@ -1002,6 +1088,7 @@ paths:
     get:
       tags:
         - Peserta
+      description: kode tracking di dapatkan ketika submit pendaftaran, kode dikirimkan via email.
       parameters:
         - in: query
           name: kode
@@ -1089,6 +1176,7 @@ paths:
     post:
       tags:
         - Pembimbing
+      description: tidak perlu isi kolom is_lc ketika menambah data baru. gunakan saat ingin update, dan isi id sesuai baris yang ingin di update.
       parameters:
         - in: query
           name: id
@@ -1118,6 +1206,8 @@ paths:
           $ref: '#/components/responses/400'
         '401':
           $ref: '#/components/responses/401'
+  
+  /pembimbing:
     get:
       tags:
         - Pembimbing
