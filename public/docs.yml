@@ -998,6 +998,24 @@ paths:
         '401':
           $ref: '#/components/responses/401'
 
+  /peserta-tracking:
+    get:
+      tags:
+        - Peserta
+      parameters:
+        - in: query
+          name: kode
+          schema:
+            type: string
+
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+
   /lampiran:
     post:
       tags:
@@ -1070,7 +1088,7 @@ paths:
   /assign-pembimbing:
     post:
       tags:
-        - Assign Pembimbing
+        - Pembimbing
       parameters:
         - in: query
           name: id
@@ -1100,4 +1118,52 @@ paths:
           $ref: '#/components/responses/400'
         '401':
           $ref: '#/components/responses/401'
+    get:
+      tags:
+        - Pembimbing
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+        - in: query
+          name: badge
+          schema:
+            type: string
+
+        - in: query
+          name: nama
+          schema:
+            type: string
+
+        - in: query
+          name: unit_kerja
+          schema:
+            type: string
+
+        - in: query
+          name: is_lc
+          schema:
+            type: string
+        
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
   
+    delete:
+      tags:
+        - Pembimbing
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
