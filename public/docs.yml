@@ -1012,6 +1012,11 @@ paths:
             type: string
 
         - in: query
+          name: badge_pembimbing
+          schema:
+            type: string
+
+        - in: query
           name: id_bidang
           schema:
             type: string
