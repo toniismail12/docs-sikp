@@ -1107,6 +1107,57 @@ paths:
           $ref: '#/components/responses/400'
         '401':
           $ref: '#/components/responses/401'
+  
+  /approve-peserta:
+    post:
+      tags:
+        - Approval
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                id_status:
+                  type: integer
+
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+
+  /reject-peserta:
+    post:
+      tags:
+        - Approval
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                id_status:
+                  type: integer
+                catatan:
+                  type: string
+
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+
 
   /lampiran:
     post:
@@ -1263,56 +1314,6 @@ paths:
         '401':
           $ref: '#/components/responses/401'
 
-  /approve-peserta:
-    post:
-      tags:
-        - Approval
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: string
-                id_status:
-                  type: integer
-
-      responses:
-        '200':
-          $ref: '#/components/responses/200'
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
-
-  /reject-peserta:
-    post:
-      tags:
-        - Approval
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: string
-                id_status:
-                  type: integer
-                catatan:
-                  type: string
-
-      responses:
-        '200':
-          $ref: '#/components/responses/200'
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
-
   /absen:
     post:
       tags:
@@ -1381,6 +1382,89 @@ paths:
     delete:
       tags:
         - Absen
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+  
+  /laporan-harian:
+    post:
+      tags:
+        - Laporan Harian
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                minggu:
+                  type: string
+                kegiatan_harian:
+                  type: string
+                ilmu_didapat:
+                  type: string
+                tanggal:
+                  type: string
+
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+
+    get:
+      tags:
+        - Laporan Harian
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+        - in: query
+          name: username
+          schema:
+            type: string
+
+        - in: query
+          name: nama
+          schema:
+            type: string
+
+        - in: query
+          name: minggu
+          schema:
+            type: string
+
+        - in: query
+          name: tanggal
+          schema:
+            type: string
+        
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+
+    delete:
+      tags:
+        - Laporan Harian
       parameters:
         - in: query
           name: id
