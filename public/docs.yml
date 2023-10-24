@@ -956,9 +956,10 @@ paths:
 
         - in: query
           name: id_status
+          description: 'group by id status, gunakan tanda koma(,) sebagai pemisah. contoh: 1,2,3'
           schema:
             type: string
-        
+          
         - in: query
           name: id_unitkerja
           schema:
@@ -1073,6 +1074,7 @@ paths:
 
         - in: query
           name: id_status
+          description: 'group by id status, gunakan tanda koma(,) sebagai pemisah. contoh: 1,2,3'
           schema:
             type: string
         
