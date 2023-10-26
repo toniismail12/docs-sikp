@@ -1112,6 +1112,25 @@ paths:
         '401':
           $ref: '#/components/responses/401'
   
+  /peserta-qr:
+    get:
+      tags:
+        - Peserta
+      description: uuid peserta wajib diisi.
+      parameters:
+        - in: query
+          name: uuid
+          schema:
+            type: string
+
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+  
   /approve-peserta:
     post:
       tags:
