@@ -870,6 +870,8 @@ paths:
                   type: string
                 nilai:
                   type: string
+                tunduk_ketentuan_pusri:
+                  type: string
       responses:
         '200':
           $ref: '#/components/responses/200'
@@ -1150,6 +1152,8 @@ paths:
                 id_status:
                   type: integer
                 catatan:
+                  type: string
+                message_email:
                   type: string
 
       responses:
