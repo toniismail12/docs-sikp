@@ -870,6 +870,8 @@ paths:
                   type: string
                 nilai:
                   type: string
+                gender:
+                  type: string
                 tunduk_ketentuan_pusri:
                   type: string
       responses:
@@ -1490,6 +1492,90 @@ paths:
     delete:
       tags:
         - Laporan Harian
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+
+  /rekening:
+    post:
+      tags:
+        - Rekening
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                nama:
+                  type: string
+                bank:
+                  type: string
+                nomor:
+                  type: string
+
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+
+    get:
+      tags:
+        - Rekening
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+        - in: query
+          name: username
+          schema:
+            type: string
+
+        - in: query
+          name: nama
+          schema:
+            type: string
+
+        - in: query
+          name: bank
+          schema:
+            type: string
+
+        - in: query
+          name: nomor
+          schema:
+            type: string
+        
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+
+
+    delete:
+      tags:
+        - Rekening
       parameters:
         - in: query
           name: id
