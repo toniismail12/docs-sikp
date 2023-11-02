@@ -1648,3 +1648,74 @@ paths:
           $ref: '#/components/responses/400'
         '401':
           $ref: '#/components/responses/401'
+
+  /access-key:
+    post:
+      tags:
+        - Access Key
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                app_name:
+                  type: string
+                pic_name:
+                  type: string
+                pic_badge:
+                  type: string
+
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+    get:
+      tags:
+        - Access Key
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+        - in: query
+          name: pic_name
+          schema:
+            type: string
+        - in: query
+          name: pic_badge
+          schema:
+            type: string
+        - in: query
+          name: app_name
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+    delete:
+      tags:
+        - Access Key
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
