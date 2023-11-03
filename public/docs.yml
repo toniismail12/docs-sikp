@@ -1719,3 +1719,22 @@ paths:
           $ref: '#/components/responses/400'
         '401':
           $ref: '#/components/responses/401'
+
+  /summary-status:
+    get:
+      tags:
+        - Sumamry Status
+      parameters:
+      
+        - in: query
+          name: id_unitkerja
+          schema:
+            type: string
+        
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
