@@ -832,6 +832,12 @@ paths:
       parameters:
         - in: query
           name: id
+          description: id digunakan untuk update peserta berdasarkan id
+          schema:
+            type: string
+        - in: query
+          name: username
+          description: username boleh dikosongkan, username di isi apabila update peserta id_status = 3
           schema:
             type: string
       requestBody:
@@ -1125,6 +1131,117 @@ paths:
           name: uuid
           schema:
             type: string
+
+      responses:
+        "200":
+          $ref: "#/components/responses/200"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+
+  /iam-peserta:
+    get:
+      tags:
+        - Peserta For IAM
+      parameters:
+        - in: query
+          name: key
+          required: true
+          schema:
+            type: string
+
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/Limit"
+
+        - in: query
+          name: pembimbing
+          schema:
+            type: string
+
+        - in: query
+          name: bidang
+          schema:
+            type: string
+
+        - in: query
+          name: no_induk
+          schema:
+            type: string
+
+        - in: query
+          name: nama
+          schema:
+            type: string
+
+        - in: query
+          name: email
+          schema:
+            type: string
+
+        - in: query
+          name: kontak
+          schema:
+            type: string
+
+        - in: query
+          name: start_date
+          schema:
+            type: string
+
+        - in: query
+          name: end_date
+          schema:
+            type: string
+
+        - in: query
+          name: nilai
+          schema:
+            type: string
+
+        - in: query
+          name: status
+          schema:
+            type: string
+
+        - in: query
+          name: id_status
+          description: "group by id status, gunakan tanda koma(,) sebagai pemisah. contoh: 1,2,3"
+          schema:
+            type: string
+
+        - in: query
+          name: badge_approval
+          schema:
+            type: string
+
+      responses:
+        "200":
+          $ref: "#/components/responses/200"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+  
+  /iam-peserta-approval:
+    post:
+      tags:
+        - Approval For IAM
+      parameters:
+        - in: query
+          name: key
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id_peserta:
+                  type: string
 
       responses:
         "200":
@@ -1723,7 +1840,7 @@ paths:
   /summary-status:
     get:
       tags:
-        - Sumamry Status
+        - Summary Status
       parameters:
       
         - in: query
