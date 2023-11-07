@@ -1855,3 +1855,117 @@ paths:
           $ref: '#/components/responses/400'
         '401':
           $ref: '#/components/responses/401'
+
+  /data-badge:
+    post:
+      tags:
+        - Data For Badge
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                NamaLengkap:
+                  type: string
+                TempatTanggalLahir:
+                  type: string
+                Gender:
+                  type: string
+                Bangsa:
+                  type: string
+                Agama:
+                  type: string
+                Suku:
+                  type: string
+                StatusKawin:
+                  type: string
+                Pendidikan:
+                  type: string
+                AlamatRumahSebelumnya:
+                  type: string
+                AlamatRumahSekarang:
+                  type: string
+                Telepon:
+                  type: string
+                KartuPendudukNomor:
+                  type: string
+                KartuTandaMahasiswaNo:
+                  type: string
+                TinggiBadanBeratBadan:
+                  type: string
+                WarnaRambutMata:
+                  type: string
+                HidungMukaWarnaKulit:
+                  type: string
+                CiriKhusus:
+                  type: string
+                PernahOrganisasiOrmas:
+                  type: string
+                PernahDiperiksaPihakBerwajib:
+                  type: string
+                NamaOrangTuaLakiLaki:
+                  type: string
+                AlamatOrangTuaLakiLaki:
+                  type: string
+                NamaOrangTuaPerempuan:
+                  type: string
+                AlamatOrangTuaPerempuan:
+                  type: string
+                NamaDanAlamatSaudara:
+                  type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+          
+    get:
+      tags:
+        - Data For Badge
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+        - in: query
+          name: nama
+          schema:
+            type: string
+        - in: query
+          name: no_induk
+          schema:
+            type: string
+        - in: query
+          name: pendidikan
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+
+    delete:
+      tags:
+        - Data For Badge
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
