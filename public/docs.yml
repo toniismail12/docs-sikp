@@ -164,6 +164,7 @@ paths:
             type: string
         - in: query
           name: role
+          description: "group by role, gunakan tanda koma(,) sebagai pemisah. contoh: user,LC,pembimbing"
           schema:
             type: string
       responses:
@@ -268,6 +269,11 @@ paths:
     post:
       tags:
         - Bidang
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
       requestBody:
         required: true
         content:
