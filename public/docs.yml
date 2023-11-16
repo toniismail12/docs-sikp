@@ -829,6 +829,29 @@ paths:
           $ref: "#/components/responses/400"
         "401":
           $ref: "#/components/responses/401"
+  
+  /get-sekolah:
+   get:
+      tags:
+        - Get Data Sekolah
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+        - in: query
+          name: sekolah
+          schema:
+            type: string
+        - in: query
+          name: tingkat_pendidikan
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
 
   /peserta:
     post:
@@ -887,6 +910,8 @@ paths:
                   type: string
                 catatan:
                   type: string
+                is_priority:
+                  type: number
       responses:
         "200":
           $ref: "#/components/responses/200"
