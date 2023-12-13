@@ -6,10 +6,10 @@ info:
 servers:
   - url: http://localhost:9001
     description: API Local
-  - url: https://gwkong.pusri.co.id/sikp-prod
-    description: API Prod
   - url: https://gwkong.pusri.co.id/sikp-dev
     description: API Dev
+  - url: https://gwkong.pusri.co.id/sikp-prod
+    description: API Prod
 
 components:
   securitySchemes:
@@ -829,14 +829,14 @@ paths:
           $ref: "#/components/responses/400"
         "401":
           $ref: "#/components/responses/401"
-  
+
   /get-sekolah:
-   get:
+    get:
       tags:
         - Get Data Sekolah
       parameters:
-        - $ref: '#/components/parameters/Page'
-        - $ref: '#/components/parameters/Limit'
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/Limit"
         - in: query
           name: sekolah
           schema:
@@ -846,12 +846,12 @@ paths:
           schema:
             type: string
       responses:
-        '200':
-          $ref: '#/components/responses/200'
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
+        "200":
+          $ref: "#/components/responses/200"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
 
   /peserta:
     post:
@@ -1253,7 +1253,7 @@ paths:
           $ref: "#/components/responses/400"
         "401":
           $ref: "#/components/responses/401"
-  
+
   /iam-peserta-approval:
     post:
       tags:
@@ -1430,6 +1430,10 @@ paths:
                   type: integer
                 is_lc:
                   type: integer
+                emp_grade:
+                  type: string
+                tingkat_pendidikan:
+                  type: string
       responses:
         "200":
           $ref: "#/components/responses/200"
@@ -1735,7 +1739,7 @@ paths:
           $ref: "#/components/responses/400"
         "401":
           $ref: "#/components/responses/401"
- 
+
   /pembekalan:
     post:
       tags:
@@ -1758,29 +1762,29 @@ paths:
                   type: string
 
       responses:
-        '200':
-          $ref: '#/components/responses/200'
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
+        "200":
+          $ref: "#/components/responses/200"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
     get:
       tags:
         - Pembekalan
       parameters:
-        - $ref: '#/components/parameters/Page'
-        - $ref: '#/components/parameters/Limit'
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/Limit"
         - in: query
           name: title
           schema:
             type: string
       responses:
-        '200':
-          $ref: '#/components/responses/200'
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
+        "200":
+          $ref: "#/components/responses/200"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
     delete:
       tags:
         - Pembekalan
@@ -1790,12 +1794,12 @@ paths:
           schema:
             type: string
       responses:
-        '200':
-          $ref: '#/components/responses/200'
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
+        "200":
+          $ref: "#/components/responses/200"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
 
   /access-key:
     post:
@@ -1821,18 +1825,18 @@ paths:
                   type: string
 
       responses:
-        '200':
-          $ref: '#/components/responses/200'
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
+        "200":
+          $ref: "#/components/responses/200"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
     get:
       tags:
         - Access Key
       parameters:
-        - $ref: '#/components/parameters/Page'
-        - $ref: '#/components/parameters/Limit'
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/Limit"
         - in: query
           name: pic_name
           schema:
@@ -1846,12 +1850,12 @@ paths:
           schema:
             type: string
       responses:
-        '200':
-          $ref: '#/components/responses/200'
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
+        "200":
+          $ref: "#/components/responses/200"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
     delete:
       tags:
         - Access Key
@@ -1861,31 +1865,30 @@ paths:
           schema:
             type: string
       responses:
-        '200':
-          $ref: '#/components/responses/200'
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
+        "200":
+          $ref: "#/components/responses/200"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
 
   /summary-status:
     get:
       tags:
         - Summary Status
       parameters:
-      
         - in: query
           name: id_unitkerja
           schema:
             type: string
-        
+
       responses:
-        '200':
-          $ref: '#/components/responses/200'
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
+        "200":
+          $ref: "#/components/responses/200"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
 
   /data-badge:
     post:
@@ -1952,19 +1955,19 @@ paths:
                 NamaDanAlamatSaudara:
                   type: string
       responses:
-        '200':
-          $ref: '#/components/responses/200'
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
-          
+        "200":
+          $ref: "#/components/responses/200"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+
     get:
       tags:
         - Data For Badge
       parameters:
-        - $ref: '#/components/parameters/Page'
-        - $ref: '#/components/parameters/Limit'
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/Limit"
         - in: query
           name: nama
           schema:
@@ -1978,12 +1981,12 @@ paths:
           schema:
             type: string
       responses:
-        '200':
-          $ref: '#/components/responses/200'
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
+        "200":
+          $ref: "#/components/responses/200"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
 
     delete:
       tags:
@@ -1994,9 +1997,252 @@ paths:
           schema:
             type: string
       responses:
-        '200':
-          $ref: '#/components/responses/200'
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
+        "200":
+          $ref: "#/components/responses/200"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+  /informasi:
+    post:
+      tags:
+        - Informasi
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                deskripsi:
+                  type: string
+                title:
+                  type: string
+                is_pengumuman:
+                  type: integer
+                is_penutupan:
+                  type: integer
+                is_active:
+                  type: integer
+
+      responses:
+        "200":
+          $ref: "#/components/responses/200"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+    get:
+      tags:
+        - Informasi
+      parameters:
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/Limit"
+          schema:
+            type: string
+      responses:
+        "200":
+          $ref: "#/components/responses/200"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+  /faq:
+    post:
+      tags:
+        - Faq
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                deskripsi:
+                  type: string
+                title:
+                  type: string
+
+      responses:
+        "200":
+          $ref: "#/components/responses/200"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+    get:
+      tags:
+        - Faq
+      parameters:
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/Limit"
+        - in: query
+          name: title
+          schema:
+            type: string
+      responses:
+        "200":
+          $ref: "#/components/responses/200"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+    delete:
+      tags:
+        - Faq
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+      responses:
+        "200":
+          $ref: "#/components/responses/200"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+
+  /master-honor:
+    post:
+      tags:
+        - Honor
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                eselon:
+                  type: string
+                grade:
+                  type: string
+                category:
+                  type: string
+                nilai_rupiah:
+                  type: integer
+
+      responses:
+        "200":
+          $ref: "#/components/responses/200"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+    get:
+      tags:
+        - Honor
+      parameters:
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/Limit"
+        - in: query
+          name: eselon
+          schema:
+            type: string
+        - in: query
+          name: grade
+          schema:
+            type: string
+        - in: query
+          name: category
+          schema:
+            type: string
+      responses:
+        "200":
+          $ref: "#/components/responses/200"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+    delete:
+      tags:
+        - Honor
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+      responses:
+        "200":
+          $ref: "#/components/responses/200"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+
+  /update-status-honor:
+    post:
+      tags:
+        - Honor
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+
+      responses:
+        "200":
+          $ref: "#/components/responses/200"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+
+  /honor-pembimbing:
+    get:
+      tags:
+        - Honor
+      parameters:
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/Limit"
+        - in: query
+          name: nama
+          schema:
+            type: string
+        - in: query
+          name: badge
+          schema:
+            type: string
+        - in: query
+          name: grade
+          schema:
+            type: string
+        - in: query
+          name: category
+          description: mahasiswa atau siswa
+          schema:
+            type: string
+        - in: query
+          name: status
+          description: sudah-dibayar atau belum-dibayar
+          schema:
+            type: string
+            
+      responses:
+        "200":
+          $ref: "#/components/responses/200"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+    
