@@ -1430,8 +1430,6 @@ paths:
                   type: integer
                 is_lc:
                   type: integer
-                emp_grade:
-                  type: string
                 tingkat_pendidikan:
                   type: string
       responses:
