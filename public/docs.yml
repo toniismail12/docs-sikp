@@ -628,6 +628,8 @@ paths:
                   type: string
                 end_date:
                   type: string
+                status:
+                  type: string
       responses:
         "200":
           $ref: "#/components/responses/200"
@@ -652,6 +654,11 @@ paths:
             type: string
         - in: query
           name: end_date
+          schema:
+            type: string
+        - in: query
+          name: status
+          description: open atau closed
           schema:
             type: string
       responses:
