@@ -4,8 +4,6 @@ info:
   title: API BE-SIKP 2023
   description: API Documentation for BE-SIKP
 servers:
-  - url: http://localhost:9001
-    description: API Local
   - url: https://gwkong.pusri.co.id/sikp-dev
     description: API Dev
   - url: https://gwkong.pusri.co.id/sikp-prod
@@ -2223,6 +2221,62 @@ paths:
             type: string
         - in: query
           name: grade
+          schema:
+            type: string
+        - in: query
+          name: category
+          description: mahasiswa atau siswa
+          schema:
+            type: string
+        - in: query
+          name: status
+          description: sudah-dibayar atau belum-dibayar
+          schema:
+            type: string
+            
+      responses:
+        "200":
+          $ref: "#/components/responses/200"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+
+  /update-status-honor-peserta:
+    post:
+      tags:
+        - Honor
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+
+      responses:
+        "200":
+          $ref: "#/components/responses/200"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+
+  /honor-peserta:
+    get:
+      tags:
+        - Honor
+      parameters:
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/Limit"
+        - in: query
+          name: nama
+          schema:
+            type: string
+        - in: query
+          name: no_induk
           schema:
             type: string
         - in: query
