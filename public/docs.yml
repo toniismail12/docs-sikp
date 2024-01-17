@@ -4,6 +4,8 @@ info:
   title: API BE-SIKP 2023
   description: API Documentation for BE-SIKP
 servers:
+  - url: http://localhost:9001
+    description: API Local
   - url: https://gwkong.pusri.co.id/sikp-dev
     description: API Dev
   - url: https://gwkong.pusri.co.id/sikp-prod
@@ -869,11 +871,7 @@ paths:
           description: id digunakan untuk update peserta berdasarkan id
           schema:
             type: string
-        - in: query
-          name: username
-          description: username boleh dikosongkan, username di isi apabila update peserta id_status = 3
-          schema:
-            type: string
+       
       requestBody:
         required: true
         content:
