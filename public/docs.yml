@@ -4,8 +4,6 @@ info:
   title: API BE-SIKP 2023
   description: API Documentation for BE-SIKP
 servers:
-  - url: http://localhost:9001
-    description: API Local
   - url: https://gwkong.pusri.co.id/sikp-dev
     description: API Dev
   - url: https://gwkong.pusri.co.id/sikp-prod
@@ -1681,6 +1679,12 @@ paths:
                 bank:
                   type: string
                 nomor:
+                  type: string
+                npwp:
+                  type: string
+                nik:
+                  type: string
+                alamat:
                   type: string
 
       responses:
