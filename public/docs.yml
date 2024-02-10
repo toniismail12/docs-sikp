@@ -745,6 +745,10 @@ paths:
                   type: string
                 id_status:
                   type: integer
+                provinsi:
+                  type: string
+                kota:
+                  type: string
       responses:
         "200":
           $ref: "#/components/responses/200"
@@ -2299,6 +2303,38 @@ paths:
           schema:
             type: string
             
+      responses:
+        "200":
+          $ref: "#/components/responses/200"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+    
+
+  /provinsi:
+    get:
+      tags:
+        - Provinsi
+            
+      responses:
+        "200":
+          $ref: "#/components/responses/200"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+    
+  /kota:
+    get:
+      tags:
+        - Kota
+      parameters:
+        - in: query
+          name: provinsi_id
+          schema:
+            type: string
+        
       responses:
         "200":
           $ref: "#/components/responses/200"
