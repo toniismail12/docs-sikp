@@ -2343,3 +2343,43 @@ paths:
         "401":
           $ref: "#/components/responses/401"
     
+  /get-kode:
+    get:
+      tags:
+        - Validasi Email
+      parameters:
+        - in: query
+          name: email
+          schema:
+            type: string
+        
+      responses:
+        "200":
+          $ref: "#/components/responses/200"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+  
+  /verified-kode:
+    get:
+      tags:
+        - Validasi Email
+      parameters:
+        - in: query
+          name: email
+          schema:
+            type: string
+        - in: query
+          name: kode
+          schema:
+            type: string
+        
+      responses:
+        "200":
+          $ref: "#/components/responses/200"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+    
